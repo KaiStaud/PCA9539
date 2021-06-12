@@ -9,6 +9,12 @@ The MCU configures Port0 as 8-bit Input and Port1 as 8-bit Output.
 The Input Byte is readen and outputed,afterwards an Inverted Read is performed, and its output shifted out to 
 the Output Register
 ```
+#include "PCA9639/PCA9539.h"
+int main
+{
+// HAL Init
+//...
+// User Code
 uint8_t ret;
 Portexpander::PCA9539 exp(0xee,hi2c1);
 exp.ConfigurePort(Portexpander::Port0, 0xFF);
@@ -24,5 +30,6 @@ exp.ConfigurePort(Portexpander::Port1,0);
 	  ret = exp.ReadPort(Portexpander::Port0);
 	  exp.WritePort(Portexpander::Port1,ret);
 	  HAL_Delay(1000);
+  }
   }
 ```
